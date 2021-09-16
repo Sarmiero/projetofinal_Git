@@ -7,7 +7,7 @@
 
 <body>
 <form name="pesquisa" action="provaresp.php" method="POST">
-<table border="0" width=100%>
+<table border="15" width=100%>
 <tr>
 <td width="5%">Cliente:</td><td><input type=text name="txtcliente" size=60 maxlength=50></td>
 </tr>  

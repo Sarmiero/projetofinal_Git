@@ -1,33 +1,25 @@
 <html>
 <head>
-<title>Suas Respostas</title>
-<meta charset="utf-8">
+<title>Relatório de dados</title>
+<META CHARSET="utf-8">
 </head>
 
 <body>
+<table border=2 width=70% align=center>
+<tr align=center>
+<td width=25%> Cliente </td> <td width=25%> Contato </td> <td width=25%> Email </td> </tr>
+
 <?php
 require 'provaconexao.php';
 
-$nome = $_POST['txtnome'];
-$telefone = $_POST['txttelefone'];
-$email = $_POST['txtemail'];
-
-
-Echo "Seu nome é: ".$nome."<br>";
-Echo "Seu telefone é: ".$telefone."<br>";
-Echo "Seu e-mail é: ".$email."<br>";
-
-
 $conexao = DBConnect();
+$sql = "select nomecliente, telcliente, emailcliente from tblclientes";
 
-$sql = "INSERT INTO tblclientes(idcliente, nomecliente, telcliente, emailcliente)
-		values (0, '$nome', '$telefone', '$email')";
-		
-if (mysqli_query($conexao, $sql)) {
-	echo "Cadastro  realizado com sucesso!";
-} else {
-	echo "Erro: ".mysqli_error($conexao);
-}
-?>
-</body>
-</html>	
+$result1 = mysqli_query($conexao, $sql) or die (mysqli_error($conexao));
+
+while ($row = mysqli_fetch_assoc($result1)) {
+	
+echo "<tr align=center>";
+echo "<td>".$row['nomecliente']."</td>";
+echo "<td>".$row['telcliente']."</td>";
+echo "<td>".$row['emailcliente']."</td>";
